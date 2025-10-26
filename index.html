@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA_Compatible" content="IE-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styel.css">
+    <script defer src="weather-header.js">
+      const apiUrl= "api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={1df04cf4e992952fa3bf33becb55e3ee}"
+    </script>
     <title>My Weather App</title>
 </head>
 <body>
@@ -162,6 +165,7 @@
   </main>
   <footer>
     <hr />
+    <div id="date"></div>
     &copy; <span id="year"></span> Chandler Booth <a href="https://tooeletech.edu/" target="_blank" rel="noopener noreferrer">Tooele Technical Colledge</a>
     <br>
     last updated: <span id="updated"></span>
