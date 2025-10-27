@@ -1,24 +1,14 @@
-let currentDate = new Date().toLocaleDateString();
-let date = document.querySelector("#date");
 
-date.textContent = currentDate;
+const newsKey =  "616ea8afa6154dcba06159bec84c7dfc";
 
-let currentYear = new Date().getFullYear();
-let year = document.querySelector("#year");
-
-year.textContent = currentYear;
-
-const city = "Tooele";
-const apiKey =  "616ea8afa6154dcba06159bec84c7dfc";
-
-const apiUrl = `https://newsapi.org/v2/everything?${city}}&appid=${apiKey}`
+const newsapiUrl = `https://newsapi.org/v2/everything?$appid=${newsKey}`
 
 function getNewsData() {
-   fetch(`https://newsapi.org/v2/everything?${city}&appid=${apiKey}`)
+   fetch(`https://newsapi.org/v2/everything?appid=${newsKey}`)
     .then((response) => {
       
       if (!response.ok) {
-        throw new Error("HTTP error! status: ${response.status}");
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     })
@@ -47,7 +37,7 @@ function getNewsData() {
 
       currentNews.textContent = `${mainarticle}`
       currentDesc.textContent = description
-      
-   }
 
-   document.addEventListener("DomContentLoaded", getNesData())
+   }
+console.log("hi")
+   document.addEventListener("DomContentLoaded", getNewsData())
