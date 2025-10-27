@@ -1,4 +1,5 @@
  const apiKey = "616ea8afa6154dcba06159bec84c7dfc"
+ const city = "Tooele"
 
    const apiUrl = "https://newsapi.org/account&appid={616ea8afa6154dcba06159bec84c7dfc}"
 

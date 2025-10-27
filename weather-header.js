@@ -12,10 +12,10 @@ const units = "imperial";
 const city = "Tooele";
 const apiKey =  "1df04cf4e992952fa3bf33becb55e3ee";
 
-const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=${Tooele}&units=${Imperial}&appid=${1df04cf4e992952fa3bf33becb55e3ee}"
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`
 
 function getWeatherData() {
-   fetch("https://api.openweathermap.org/data/2.5/weather?q=${Tooele}&units=${Imperial}&appid=${1df04cf4e992952fa3bf33becb55e3ee}")
+   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`)
     .then((response) => {
       
       if (!response.ok) {
@@ -34,7 +34,7 @@ function getWeatherData() {
     });
    }
 
-   function updatedWeatherDisplay(data) {
+   function updateWeatherDisplay(data) {
       const currentTemp = document.getElementById("current-temp")
       const currentDesc = document.getElementById("current-desc")
       const currentHumid = document.getElementById("current-humid")
@@ -46,14 +46,14 @@ function getWeatherData() {
       const windSpeed = data.wind.windSpeed
       const windChill = "N/A"
       const iconCode = data.weather[0].icon
-      const iconUrl = "https://openweathermap.org/img/win/${iconCode}@2x.png"
-      currentTemp.textContent = "${temperature} °F"
+      const iconUrl = `https://openweathermap.org/img/win/${iconCode}@2x.png`
+      currentTemp.textContent = `${temperature} °F`
       currentDesc.textContent = description
-      currentHumid.textContent = "${humidity}%"
-      currentWindSpeed.textContent = "${windSpeed} mph"
+      currentHumid.textContent = `${humidity}%`
+      currentWindSpeed.textContent = `${windSpeed} mph`
       currentWindChill.textContent - windChill
    }
 
-   document.addEventListener("DomContentLoaded", getWeatherData)
+   document.addEventListener("DomContentLoaded", getWeatherData())
 
   
