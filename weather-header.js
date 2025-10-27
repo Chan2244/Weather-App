@@ -8,7 +8,50 @@ let year = document.querySelector("#year");
 
 year.textContent = currentYear;
 
-fetch("https://openweathermap.org/")
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error("Error fetching data:", error))
+const units = "imperial";
+const city = "Tooele";
+const apiKey =  "1df04cf4e992952fa3bf33becb55e3ee";
+
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=${Tooele}&units=${Imperial}&appid=${1df04cf4e992952fa3bf33becb55e3ee}"
+
+function getWeatherData() {
+   fetch(apiUrl)
+    .then((response) => {
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+
+    .then((data) => {
+      updateWeatherDisplay(date);
+    })
+
+    .catch((error) => {
+      console.error("Error fetching weather data:", error)
+      alert("Failed to fetch weather data. Please try again later.")
+    });
+   }
+
+   function updatedWeatherDisplay(data) {
+      const currentTemp = document.getElementById("current-temp")
+      const currentDesc = document.getElementById("current-desc")
+      const currentHumid = document.getElementById("current-humid")
+      const currentWindSpeed= document.getElementById("current-windSpeed")
+      const currentWindChill = document.getElementById("current-windChill")
+      const temperature = Math.round(data.main.temp)
+      const description = data.weather[0].description
+      const humidity = data.main.humidity
+      const windSpeed = data.wind.windSpeed
+      const windChill = "N/A"
+      const iconCode = data.weather[0].icon
+      const iconUrl = "https://openweathermap.org/img/win/${iconCode}@2x.png"
+      currentTemp.textContent = "${temperature} °F"
+      currentDesc.textContent = description
+      currentHumid.textContent = "${humidity}%"
+      currentWindSpeed.textContent = "${windSpeed} mph"
+      currentWindChill.textContent - windChill
+   }
+
+   document.addEventListener("DomContentLoaded", getWeatherData)
