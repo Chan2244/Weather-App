@@ -15,17 +15,17 @@ const apiKey =  "1df04cf4e992952fa3bf33becb55e3ee";
 const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=${Tooele}&units=${Imperial}&appid=${1df04cf4e992952fa3bf33becb55e3ee}"
 
 function getWeatherData() {
-   fetch(apiUrl)
+   fetch("https://api.openweathermap.org/data/2.5/weather?q=${Tooele}&units=${Imperial}&appid=${1df04cf4e992952fa3bf33becb55e3ee}")
     .then((response) => {
       
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error("HTTP error! status: ${response.status}");
       }
       return response.json();
     })
 
     .then((data) => {
-      updateWeatherDisplay(date);
+      updateWeatherDisplay(data);
     })
 
     .catch((error) => {
@@ -55,3 +55,5 @@ function getWeatherData() {
    }
 
    document.addEventListener("DomContentLoaded", getWeatherData)
+
+  
